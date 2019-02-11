@@ -1,5 +1,6 @@
 import os
 import shutil
+from content_types import ContentType
 
 
 def create(filename, path='generates/'):
@@ -9,8 +10,10 @@ def create(filename, path='generates/'):
     for folder in folders:
         os.makedirs('{}/{}'.format(archive_path, folder))
 
+    content_type = ContentType()
+
     with open(archive_path + '/[Content_Types].xml', 'w') as f:
-        pass
+        f.write(content_type.get_xml())
 
     with open(archive_path + '/_rels/.rels', 'w') as f:
         pass
